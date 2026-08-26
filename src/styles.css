@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui;
+  --font-display: "Playfair Display", Georgia, serif;
+  --color-forest: #172f2b;
+  --color-coral: #fb6b3b;
+  --color-lime: #d8f26a;
+  --color-sage: #dceadd;
+}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#fafaf7] text-forest antialiased;
+  }
+  button,
+  a {
+    @apply transition duration-200 ease-out;
+  }
+  button {
+    @apply cursor-pointer active:scale-[0.98];
+  }
+  nav a.active {
+    @apply text-forest;
+  }
+}
+
+.page-transition {
+  animation: page-enter 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+@utility eyebrow {
+  @apply font-mono text-[10px] font-medium uppercase tracking-[.16em] text-stone-500;
+}
+
+.tiptap-editor > * + * {
+  margin-top: 1rem;
+}
+
+.content-toolbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.content-toolbar::-webkit-scrollbar {
+  display: none;
+}
+
+.tiptap-editor h1,
+.article-content h1 {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.tiptap-editor h2,
+.article-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.tiptap-editor h3,
+.article-content h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+/* Tiptap serializes the Bold mark as a <strong> element. Set its weight
+   explicitly so it remains visibly bold in both the editor and published story. */
+.tiptap-editor strong,
+.tiptap-editor b,
+.article-content strong,
+.article-content b {
+  font-weight: 700;
+}
+
+.tiptap-editor ul,
+.article-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+.tiptap-editor ol,
+.article-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
+.tiptap-editor pre,
+.article-content pre {
+  overflow-x: auto;
+  border-radius: 0.375rem;
+  background: #1c1917;
+  padding: 1rem;
+  color: #f5f5f4;
+}
+
+.tiptap-editor code,
+.article-content code {
+  border-radius: 0.25rem;
+  background: #f5f5f4;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.9em;
+}
+
+.tiptap-editor pre code,
+.article-content pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.tiptap-editor hr,
+.article-content hr {
+  border: 0;
+  border-top: 1px solid #d6d3d1;
+}
+
+.tiptap-editor a,
+.article-content a {
+  color: #0f766e;
+  text-decoration: underline;
+}
+
+.tiptap-editor img,
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.375rem;
+}
+
+.tiptap-editor blockquote,
+.article-content blockquote {
+  border-left: 3px solid #d6d3d1;
+  padding-left: 1rem;
+  color: #78716c;
+}
